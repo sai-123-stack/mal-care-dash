@@ -57,6 +57,27 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        health: {
+          primary: "hsl(var(--health-primary))",
+          secondary: "hsl(var(--health-secondary))",
+          success: "hsl(var(--health-success))",
+          warning: "hsl(var(--health-warning))",
+          danger: "hsl(var(--health-danger))",
+        },
+        status: {
+          sam: "hsl(var(--status-sam))",
+          mam: "hsl(var(--status-mam))",
+          normal: "hsl(var(--status-normal))",
+        },
+      },
+      backgroundImage: {
+        'gradient-health': 'var(--gradient-health)',
+        'gradient-card': 'var(--gradient-card)',
+      },
+      boxShadow: {
+        'health-sm': 'var(--shadow-sm)',
+        'health-md': 'var(--shadow-md)',
+        'health-lg': 'var(--shadow-lg)',
       },
       borderRadius: {
         lg: "var(--radius)",
