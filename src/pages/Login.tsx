@@ -31,12 +31,12 @@ export default function Login() {
       return;
     }
 
-    const success = await login(username, password);
+    const { error } = await login(username, password);
     
-    if (!success) {
+    if (error) {
       toast({
         title: "Login Failed",
-        description: "Invalid username or password",
+        description: error,
         variant: "destructive"
       });
     }
@@ -76,15 +76,15 @@ export default function Login() {
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="username">Username</Label>
-                <Input
-                  id="username"
-                  type="text"
-                  placeholder="Enter your username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  disabled={isLoading}
-                />
+                <Label htmlFor="username">Email</Label>
+              <Input
+                id="username"
+                type="email"
+                placeholder="Enter your email"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                disabled={isLoading}
+              />
               </div>
               
               <div className="space-y-2">
@@ -116,10 +116,10 @@ export default function Login() {
             </form>
 
             <div className="mt-6 p-4 bg-accent/50 rounded-lg">
-              <p className="text-sm font-medium mb-2">Demo Credentials:</p>
+              <p className="text-sm font-medium mb-2">Demo Note:</p>
               <div className="text-xs space-y-1">
-                <p><strong>Admin:</strong> username: admin, password: admin123</p>
-                <p><strong>Health Worker:</strong> username: health001, password: health123</p>
+                <p>Create an account using the email signup feature, or use existing demo accounts</p>
+                <p>Admin users can create healthworker accounts from the admin dashboard</p>
               </div>
             </div>
           </CardContent>

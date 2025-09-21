@@ -9,7 +9,11 @@ import { DashboardLayout } from "./components/layout/DashboardLayout";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AddHealthworker from "./pages/admin/AddHealthworker";
+import ViewChildren from "./pages/admin/ViewChildren";
+import Reports from "./pages/admin/Reports";
 import HealthworkerDashboard from "./pages/healthworker/HealthworkerDashboard";
+import AddChild from "./pages/healthworker/AddChild";
+import ChildRecords from "./pages/healthworker/ChildRecords";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -43,12 +47,40 @@ const App = () => (
                 </DashboardLayout>
               </ProtectedRoute>
             } />
+            <Route path="/admin/children" element={
+              <ProtectedRoute requiredRole="admin">
+                <DashboardLayout>
+                  <ViewChildren />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/reports" element={
+              <ProtectedRoute requiredRole="admin">
+                <DashboardLayout>
+                  <Reports />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
             
             {/* Healthworker routes */}
             <Route path="/healthworker" element={
               <ProtectedRoute requiredRole="healthworker">
                 <DashboardLayout>
                   <HealthworkerDashboard />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/healthworker/add-child" element={
+              <ProtectedRoute requiredRole="healthworker">
+                <DashboardLayout>
+                  <AddChild />
+                </DashboardLayout>
+              </ProtectedRoute>
+            } />
+            <Route path="/healthworker/records" element={
+              <ProtectedRoute requiredRole="healthworker">
+                <DashboardLayout>
+                  <ChildRecords />
                 </DashboardLayout>
               </ProtectedRoute>
             } />
