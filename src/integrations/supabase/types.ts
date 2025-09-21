@@ -14,7 +14,188 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      children: {
+        Row: {
+          awc_center: string
+          city: string
+          created_at: string | null
+          current_status: string | null
+          date_of_birth: string
+          district: string
+          gender: string
+          guardian_name: string
+          healthworker_id: string | null
+          id: string
+          name: string
+          updated_at: string | null
+        }
+        Insert: {
+          awc_center: string
+          city: string
+          created_at?: string | null
+          current_status?: string | null
+          date_of_birth: string
+          district: string
+          gender: string
+          guardian_name: string
+          healthworker_id?: string | null
+          id?: string
+          name: string
+          updated_at?: string | null
+        }
+        Update: {
+          awc_center?: string
+          city?: string
+          created_at?: string | null
+          current_status?: string | null
+          date_of_birth?: string
+          district?: string
+          gender?: string
+          guardian_name?: string
+          healthworker_id?: string | null
+          id?: string
+          name?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "children_healthworker_id_fkey"
+            columns: ["healthworker_id"]
+            isOneToOne: false
+            referencedRelation: "healthworkers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      health_records: {
+        Row: {
+          child_id: string
+          edema: boolean | null
+          height: number
+          id: string
+          mam_probability: number | null
+          meals_per_day: number | null
+          normal_probability: number | null
+          poverty_index: number | null
+          predicted_status: string
+          recorded_at: string | null
+          recorded_by: string | null
+          sam_probability: number | null
+          sanitation_index: number | null
+          weight: number
+        }
+        Insert: {
+          child_id: string
+          edema?: boolean | null
+          height: number
+          id?: string
+          mam_probability?: number | null
+          meals_per_day?: number | null
+          normal_probability?: number | null
+          poverty_index?: number | null
+          predicted_status: string
+          recorded_at?: string | null
+          recorded_by?: string | null
+          sam_probability?: number | null
+          sanitation_index?: number | null
+          weight: number
+        }
+        Update: {
+          child_id?: string
+          edema?: boolean | null
+          height?: number
+          id?: string
+          mam_probability?: number | null
+          meals_per_day?: number | null
+          normal_probability?: number | null
+          poverty_index?: number | null
+          predicted_status?: string
+          recorded_at?: string | null
+          recorded_by?: string | null
+          sam_probability?: number | null
+          sanitation_index?: number | null
+          weight?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "health_records_child_id_fkey"
+            columns: ["child_id"]
+            isOneToOne: false
+            referencedRelation: "children"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "health_records_recorded_by_fkey"
+            columns: ["recorded_by"]
+            isOneToOne: false
+            referencedRelation: "healthworkers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      healthworkers: {
+        Row: {
+          awc_center: string
+          created_at: string | null
+          full_name: string
+          id: string
+          updated_at: string | null
+          user_id: string | null
+          username: string
+        }
+        Insert: {
+          awc_center: string
+          created_at?: string | null
+          full_name: string
+          id?: string
+          updated_at?: string | null
+          user_id?: string | null
+          username: string
+        }
+        Update: {
+          awc_center?: string
+          created_at?: string | null
+          full_name?: string
+          id?: string
+          updated_at?: string | null
+          user_id?: string | null
+          username?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          awc_center: string | null
+          created_at: string | null
+          full_name: string
+          id: string
+          role: string
+          updated_at: string | null
+          user_id: string
+          username: string | null
+        }
+        Insert: {
+          awc_center?: string | null
+          created_at?: string | null
+          full_name: string
+          id?: string
+          role: string
+          updated_at?: string | null
+          user_id: string
+          username?: string | null
+        }
+        Update: {
+          awc_center?: string | null
+          created_at?: string | null
+          full_name?: string
+          id?: string
+          role?: string
+          updated_at?: string | null
+          user_id?: string
+          username?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
